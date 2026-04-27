@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MIRAI FURIKAERI DIARY 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1e3a5f;
+    --navy-deep: #142844;
+    --navy-light: #2c5282;
+    --gold: #c9a961;
+    --gold-deep: #a88845;
+    --gold-soft: #e6d5a8;
+    --paper: #faf7f0;
+    --paper-warm: #f4ede0;
+    --paper-line: #d9cfb8;
+    --ink: #2a2620;
+    --ink-soft: #5a544a;
+    --crimson: #a8323c;
+    --green: #5a7a4a;
+    --shadow: rgba(20, 40, 68, 0.08);
+    --shadow-deep: rgba(20, 40, 68, 0.18);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body {
+    background: linear-gradient(170deg, #1a3050 0%, #0f1f38 100%);
+    min-height: 100vh;
+    font-family: 'Noto Serif JP', serif;
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  body {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--paper);
+    background-image:
+      radial-gradient(at 20% 10%, rgba(201, 169, 97, 0.04) 0%, transparent 50%),
+      radial-gradient(at 80% 90%, rgba(30, 58, 95, 0.03) 0%, transparent 50%);
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    max-width: 480px;
+    margin: 0 auto;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(42, 38, 32, 0.008) 2px,
+        rgba(42, 38, 32, 0.008) 4px
+      );
+    z-index: 1;
+  }
+
+  /* ============ ヘッダー ============ */
+  .app-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--paper);
+    padding: 28px 24px 22px;
+    position: relative;
+    border-bottom: 1px solid var(--gold);
+    z-index: 10;
+  }
+
+  .app-header::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201, 169, 97, 0.35);
+    pointer-events: none;
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    color: var(--gold-soft);
+    line-height: 1.1;
+  }
+
+  .header-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  .header-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: rgba(230, 213, 168, 0.7);
+    margin-top: 8px;
+  }
+
+  .signature {
+    position: absolute;
+    right: 24px;
+    bottom: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    opacity: 0.85;
+  }
+
+  /* ============ タブナビ（下部固定） ============ */
+  .tab-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: var(--navy-deep);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid var(--gold);
+    z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    color: rgba(230, 213, 168, 0.55);
+    padding: 14px 4px 12px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .tab-btn .tab-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .tab-btn.active {
+    color: var(--gold);
+  }
+
+  .tab-btn.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  /* ============ ビュー共通 ============ */
+  .view {
+    display: none;
+    padding: 24px 20px;
+    animation: fadeIn 0.4s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .view.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .view-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    letter-spacing: 0.15em;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .view-title-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--gold-deep);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.5em;
+    margin: 16px 0 24px;
+    opacity: 0.7;
+  }
+
+  /* ============ HOME ============ */
+  .home-greeting {
+    text-align: center;
+    padding: 32px 16px;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    margin: 16px 0 28px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .home-greeting::before, .home-greeting::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold);
+    font-size: 10px;
+    background: var(--paper);
+    padding: 0 8px;
+  }
+
+  .home-greeting::before { top: -7px; left: 50%; transform: translateX(-50%); }
+  .home-greeting::after { bottom: -7px; left: 50%; transform: translateX(-50%); }
+
+  .home-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    color: var(--navy);
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .home-date-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    letter-spacing: 0.2em;
+  }
+
+  .home-progress {
+    margin-top: 18px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: var(--gold-deep);
+    letter-spacing: 0.15em;
+  }
+
+  .home-progress-bar {
+    margin-top: 8px;
+    height: 2px;
+    background: var(--paper-line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-progress-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold));
+    transition: width 1s ease;
+  }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .quick-card {
+    background: linear-gradient(135deg, #ffffff 0%, var(--paper-warm) 100%);
+    border: 1px solid var(--paper-line);
+    padding: 18px 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .quick-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px var(--shadow);
+  }
+
+  .quick-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold-deep);
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .quick-card-label {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    color: var(--navy);
+    letter-spacing: 0.2em;
+    margin-top: 6px;
+  }
+
+  .home-philosophy {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--gold-soft);
+    padding: 24px 20px;
+    margin: 8px -4px;
+    position: relative;
+    border-left: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+  }
+
+  .home-philosophy-quote {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 13px;
+    line-height: 2;
+    letter-spacing: 0.1em;
+  }
+
+  .home-philosophy-author {
+    text-align: right;
+    margin-top: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+
+  /* ============ YEAR ============ */
+  .year-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .year-stat {
+    background: white;
+    border: 1px solid var(--paper-line);
+    padding: 14px 8px;
+    text-align: center;
+    border-top: 2px solid var(--gold);
+  }
+
+  .year-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--navy);
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .year-stat-label {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 10px;
+    color: var(--ink-soft);
+    letter-spacing: 0.15em;
+    margin-top: 4px;
+  }
+
+  .year-stat-target {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    color: var(--gold-deep);
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  .month-section {
+    margin-bottom: 18px;
+    background: white;
+    border: 1px solid var(--paper-line);
+    overflow: hidden;
+  }
+
+  .month-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: var(--gold-soft);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .month-header-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+
+  .month-header-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    opacity: 0.85;
+  }
+
+  .month-grid {
+    display: grid;
+    grid-template-columns: 30px repeat(2, 1fr);
+    border-top: 1px solid var(--paper-line);
+  }
+
+  .month-row {
+    display: contents;
+  }
+
+  .month-cell {
+    padding: 6px 4px;
+    border-bottom: 1px dashed var(--paper-line);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: var(--ink);
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+  }
+
+  .month-cell.day-num {
+    background: var(--paper-warm);
+    justify-content: center;
+    color: var(--ink-soft);
+    border-right: 1px solid var(--paper-line);
+    font-size: 11px;
+  }
+
+  .month-cell.is-sunday { color: var(--crimson); }
+  .month-cell.is-saturday { color: var(--navy-light); }
+  .month-cell.is-holiday { background: rgba(168, 50, 60, 0.08); }
+
+  .month-cell input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 11px;
+    color: var(--ink);
+    padding: 2px 0;
+    outline: none;
+  }
+
+  .month-cell input:focus {
+    background: rgba(201, 169, 97, 0.1);
+  }
+
+  .month-cell.holiday-mark {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .month-cell.is-holiday-mark::before {
+    content: '★';
+    color: var(--gold-deep);
+    font-size: 10px;
+    margin-right: 4px;
+  }
+
+  /* ============ MONTH ============ */
+  .month-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+
+  .month-nav-btn {
+    background: none;
+    border: 1px solid var(--gold);
+    color: var(--navy);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    transition: all 0.2s;
+  }
+
+  .month-nav-btn:active {
+    background: var(--gold);
+    color: white;
+  }
+
+  .month-nav-current {
+    text-align: center;
+  }
+
+  .month-nav-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--navy);
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .month-nav-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    color: var(--gold-deep);
+    letter-spacing: 0.3em;
+    margin-top: 2px;
+  }
+
+  .theme-card {
+    background: linear-gradient(135deg, #fff 0%, var(--paper-warm) 100%);
+    border: 1px solid var(--paper-line);
+    border-top: 2px solid var(--gold);
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .theme-card-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: var(--navy);
+    letter-spacing: 0.25em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .theme-card-title::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 10px;
+  }
+
+  .theme-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .theme-label {
+    background: var(--navy);
+    color: var(--gold-soft);
+    padding: 3px 10px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    flex-shrink: 0;
+    min-width: 78px;
+    text-align: center;
+  }
+
+  .theme-label.challenge {
+    background: var(--gold-deep);
+    color: white;
+  }
+
+  .theme-input {
+    flex: 1;
+    border: none;
+    border-bottom: 1px dashed var(--paper-line);
+    background: transparent;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--ink);
+    padding: 6px 4px;
+    outline: none;
+  }
+
+  .theme-input:focus {
+    border-bottom-color: var(--gold);
+  }
+
+  .calendar-grid {
+    background: white;
+    border: 1px solid var(--paper-line);
+    margin-bottom: 16px;
+  }
+
+  .calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: var(--navy);
+    color: var(--gold-soft);
+  }
+
+  .calendar-weekday {
+    padding: 8px 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+  }
+
+  .calendar-weekday.sun { color: #ffb3a8; }
+  .calendar-weekday.sat { color: #a8c4ff; }
+
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .calendar-day {
+    aspect-ratio: 1 / 1.1;
+    border-right: 1px solid var(--paper-line);
+    border-bottom: 1px solid var(--paper-line);
+    padding: 4px 4px 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: var(--ink);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    transition: background 0.2s;
+  }
+
+  .calendar-day:nth-child(7n) { border-right: none; }
+  .calendar-day.empty { background: var(--paper-warm); cursor: default; }
+  .calendar-day.sun { color: var(--crimson); }
+  .calendar-day.sat { color: var(--navy-light); }
+  .calendar-day.today {
+    background: var(--navy);
+    color: var(--gold-soft);
+  }
+  .calendar-day:active { background: rgba(201, 169, 97, 0.15); }
+  .calendar-day.has-yoshuku::after {
+    content: '✦';
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    color: var(--gold);
+    font-size: 10px;
+  }
+
+  .calendar-day-content {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 8px;
+    color: var(--ink-soft);
+    line-height: 1.2;
+    margin-top: 2px;
+    overflow: hidden;
+    flex: 1;
+    word-break: break-all;
+  }
+
+  .calendar-day.today .calendar-day-content {
+    color: var(--gold-soft);
+  }
+
+  .wakuwaku-section {
+    background: white;
+    border: 1px solid var(--paper-line);
+    border-left: 3px solid var(--gold);
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .wakuwaku-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: var(--navy);
+    letter-spacing: 0.25em;
+    margin-bottom: 4px;
+  }
+
+  .wakuwaku-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold-deep);
+    margin-bottom: 12px;
+  }
+
+  .wakuwaku-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .wakuwaku-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .wakuwaku-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--gold-deep);
+    font-style: italic;
+    width: 20px;
+    flex-shrink: 0;
+  }
+
+  .wakuwaku-input {
+    flex: 1;
+    border: none;
+    border-bottom: 1px dotted var(--paper-line);
+    background: transparent;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--ink);
+    padding: 4px 0;
+    outline: none;
+  }
+
+  .wakuwaku-input:focus {
+    border-bottom-color: var(--gold);
+  }
+
+  .wakuwaku-input.completed {
+    text-decoration: line-through;
+    color: var(--ink-soft);
+    text-decoration-color: var(--gold);
+  }
+
+  /* ============ WEEK ============ */
+  .week-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: white;
+    border: 1px solid var(--paper-line);
+    padding: 10px 12px;
+  }
+
+  .week-nav-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--navy);
+    letter-spacing: 0.1em;
+  }
+
+  .week-nav-text-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 10px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  .day-block {
+    background: white;
+    border: 1px solid var(--paper-line);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .day-block-header {
+    background: var(--paper-warm);
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--paper-line);
+    cursor: pointer;
+  }
+
+  .day-block-header.sun .day-name { color: var(--crimson); }
+  .day-block-header.sat .day-name { color: var(--navy-light); }
+
+  .day-block-header.is-today {
+    background: var(--navy);
+    color: var(--gold-soft);
+  }
+
+  .day-block-header.is-today .day-name,
+  .day-block-header.is-today .day-date,
+  .day-block-header.is-today .day-cycle {
+    color: var(--gold-soft);
+  }
+
+  .day-info {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .day-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .day-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .day-cycle {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 10px;
+    color: var(--gold-deep);
+    letter-spacing: 0.2em;
+    background: rgba(201, 169, 97, 0.15);
+    padding: 2px 8px;
+  }
+
+  .day-block-body {
+    padding: 12px 14px;
+    display: none;
+  }
+
+  .day-block.open .day-block-body {
+    display: block;
+  }
+
+  .time-slot {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--paper-line);
+  }
+
+  .time-slot:last-of-type {
+    border-bottom: none;
+    margin-bottom: 8px;
+    padding-bottom: 0;
+  }
+
+  .time-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    color: var(--gold-deep);
+    letter-spacing: 0.15em;
+    width: 50px;
+    flex-shrink: 0;
+    padding-top: 6px;
+    border-right: 1px solid var(--paper-line);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .time-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--ink);
+    padding: 6px 4px;
+    outline: none;
+    resize: none;
+    min-height: 36px;
+    line-height: 1.5;
+  }
+
+  .todo-section {
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--paper-line);
+  }
+
+  .todo-label {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 10px;
+    color: var(--navy);
+    letter-spacing: 0.25em;
+    margin-bottom: 6px;
+  }
+
+  .todo-input {
+    width: 100%;
+    border: none;
+    border-left: 2px solid var(--gold);
+    background: var(--paper-warm);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12px;
+    color: var(--ink);
+    padding: 6px 8px;
+    outline: none;
+    resize: vertical;
+    min-height: 50px;
+    line-height: 1.6;
+  }
+
+  /* ============ DAILY ============ */
+  .daily-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--gold-soft);
+    padding: 20px;
+    text-align: center;
+    margin: -24px -20px 20px;
+    position: relative;
+  }
+
+  .daily-header::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(201, 169, 97, 0.3);
+    pointer-events: none;
+  }
+
+  .daily-date-large {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .daily-month-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: var(--gold-soft);
+    letter-spacing: 0.4em;
+    margin-top: 4px;
+  }
+
+  .daily-day-counter {
+    margin-top: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    color: rgba(230, 213, 168, 0.7);
+    font-style: italic;
+    letter-spacing: 0.2em;
+  }
+
+  .daily-weather {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .weather-icon {
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgba(201, 169, 97, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: rgba(230, 213, 168, 0.7);
+  }
+
+  .weather-icon.selected {
+    background: var(--gold);
+    color: var(--navy-deep);
+    border-color: var(--gold);
+  }
+
+  .daily-section {
+    background: white;
+    border: 1px solid var(--paper-line);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+
+  .daily-section-header {
+    background: var(--paper-warm);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--paper-line);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .daily-section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold-deep);
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .daily-section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: var(--navy);
+    letter-spacing: 0.2em;
+    line-height: 1.3;
+  }
+
+  .daily-section-body {
+    padding: 12px 14px;
+  }
+
+  .daily-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .daily-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .daily-bullet {
+    color: var(--gold-deep);
+    font-size: 8px;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .daily-input {
+    flex: 1;
+    border: none;
+    border-bottom: 1px dotted var(--paper-line);
+    background: transparent;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--ink);
+    padding: 4px 0;
+    outline: none;
+    line-height: 1.5;
+  }
+
+  .daily-input:focus {
+    border-bottom-color: var(--gold);
+  }
+
+  .daily-textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--ink);
+    padding: 4px 0;
+    outline: none;
+    resize: vertical;
+    min-height: 60px;
+    line-height: 1.7;
+  }
+
+  .daily-todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .daily-todo-item {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .daily-todo-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold-deep);
+    width: 18px;
+    flex-shrink: 0;
+  }
+
+  .daily-todo-input {
+    flex: 1;
+    border: none;
+    border-bottom: 1px dotted var(--paper-line);
+    background: transparent;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12px;
+    color: var(--ink);
+    padding: 3px 0;
+    outline: none;
+  }
+
+  .daily-todo-min {
+    width: 36px;
+    border: 1px solid var(--paper-line);
+    background: var(--paper);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    text-align: center;
+    color: var(--ink-soft);
+    padding: 2px;
+    outline: none;
+    flex-shrink: 0;
+  }
+
+  .daily-todo-min:focus {
+    border-color: var(--gold);
+  }
+
+  .daily-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 10px 12px;
+    background: white;
+    border: 1px solid var(--paper-line);
+  }
+
+  .daily-nav-btn {
+    background: none;
+    border: none;
+    color: var(--navy);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    font-style: italic;
+  }
+
+  .daily-nav-btn:active {
+    color: var(--gold-deep);
+  }
+
+  .daily-quote {
+    background: var(--paper-warm);
+    padding: 14px 16px;
+    margin-top: 8px;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    text-align: center;
+  }
+
+  .daily-quote-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold-deep);
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+  }
+
+  .daily-quote-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 13px;
+    color: var(--navy);
+    text-align: center;
+    outline: none;
+    padding: 4px 0;
+    font-style: italic;
+  }
+
+  /* ============ 保存通知 ============ */
+  .toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy-deep);
+    color: var(--gold-soft);
+    padding: 10px 24px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    z-index: 200;
+    border: 1px solid var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .toast.show { opacity: 0.95; }
+
+  /* ============ メニュー ============ */
+  .menu-section {
+    margin-top: 16px;
+    background: white;
+    border: 1px solid var(--paper-line);
+    padding: 16px;
+  }
+
+  .menu-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 12px;
+    color: var(--navy);
+    letter-spacing: 0.25em;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--paper-line);
+  }
+
+  .menu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--paper-line);
+  }
+
+  .menu-row:last-child { border-bottom: none; }
+
+  .menu-row-label {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12px;
+    color: var(--ink);
+  }
+
+  .menu-row-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+
+  .menu-btn {
+    background: var(--navy);
+    color: var(--gold-soft);
+    border: 1px solid var(--gold);
+    padding: 10px 16px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .menu-btn.danger {
+    background: white;
+    color: var(--crimson);
+    border-color: var(--crimson);
+  }
+
+  .menu-btn:active {
+    opacity: 0.8;
+  }
+
+  /* スクロールバー */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--paper); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-title">MIRAI FURIKAERI</div>
+  <div class="header-sub">DIARY 2026</div>
+  <div class="header-jp">未来振返手帳</div>
+  <div class="signature">Mio Umezawa</div>
+</header>
+
+<!-- ============ HOME ============ -->
+<section class="view active" id="view-home">
+  <div class="home-greeting">
+    <div class="home-date" id="home-date">—</div>
+    <div class="home-date-jp" id="home-date-jp">—</div>
+    <div class="home-progress" id="home-progress">— / 365日</div>
+    <div class="home-progress-bar"><div class="home-progress-fill" id="home-progress-fill"></div></div>
+  </div>
+
+  <div class="quick-actions">
+    <div class="quick-card" onclick="switchView('daily')">
+      <div class="quick-card-num">DAILY</div>
+      <div class="quick-card-label">今日の振返</div>
+    </div>
+    <div class="quick-card" onclick="switchView('week')">
+      <div class="quick-card-num">WEEK</div>
+      <div class="quick-card-label">週間予定</div>
+    </div>
+    <div class="quick-card" onclick="switchView('month')">
+      <div class="quick-card-num">MONTH</div>
+      <div class="quick-card-label">月間目標</div>
+    </div>
+    <div class="quick-card" onclick="switchView('year')">
+      <div class="quick-card-num">YEAR</div>
+      <div class="quick-card-label">年間計画</div>
+    </div>
+  </div>
+
+  <div class="home-philosophy">
+    <div class="home-philosophy-quote">
+      手帳を使った自己分析により、<br>
+      私は年収を15年で3倍に成長させることができました。<br>
+      毎日のふりかえりと目標の可視化を通じて、<br>
+      習慣が自信に変わり、豊かな毎日を実感できるようになります。
+    </div>
+    <div class="home-philosophy-author">— Mio Umezawa</div>
+  </div>
+
+  <div class="menu-section">
+    <div class="menu-title">記録の状態</div>
+    <div class="menu-row">
+      <div class="menu-row-label">振り返り記入日数</div>
+      <div class="menu-row-value" id="stat-daily-count">0</div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-row-label">予祝（月間）件数</div>
+      <div class="menu-row-value" id="stat-yoshuku-count">0</div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-row-label">休日マーク数</div>
+      <div class="menu-row-value" id="stat-holiday-count">0 / 150</div>
+    </div>
+    <button class="menu-btn" onclick="exportData()">バックアップ書出</button>
+    <button class="menu-btn danger" onclick="clearAllData()">全データ消去</button>
+  </div>
+</section>
+
+<!-- ============ YEAR ============ -->
+<section class="view" id="view-year">
+  <div class="view-title">YEAR</div>
+  <div class="view-title-jp">年間計画</div>
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <div class="year-stats">
+    <div class="year-stat">
+      <div class="year-stat-num" id="year-rest">0</div>
+      <div class="year-stat-label">休日</div>
+      <div class="year-stat-target">target 150</div>
+    </div>
+    <div class="year-stat">
+      <div class="year-stat-num" id="year-event">0</div>
+      <div class="year-stat-label">予定</div>
+      <div class="year-stat-target">記入済</div>
+    </div>
+    <div class="year-stat">
+      <div class="year-stat-num" id="year-progress-num">0%</div>
+      <div class="year-stat-label">進捗</div>
+      <div class="year-stat-target">経過率</div>
+    </div>
+  </div>
+
+  <div id="year-months"></div>
+</section>
+
+<!-- ============ MONTH ============ -->
+<section class="view" id="view-month">
+  <div class="month-nav">
+    <button class="month-nav-btn" onclick="changeMonth(-1)">◁</button>
+    <div class="month-nav-current">
+      <div class="month-nav-en" id="month-en">JANUARY</div>
+      <div class="month-nav-jp" id="month-jp">睦月</div>
+    </div>
+    <button class="month-nav-btn" onclick="changeMonth(1)">▷</button>
+  </div>
+
+  <div class="theme-card">
+    <div class="theme-card-title">月のテーマ・ゴール</div>
+    <div class="theme-row">
+      <div class="theme-label">必達</div>
+      <input class="theme-input" id="theme-must" placeholder="必ず達成すること" data-key="theme-must">
+    </div>
+    <div class="theme-row">
+      <div class="theme-label challenge">できるだけ</div>
+      <input class="theme-input" id="theme-challenge" placeholder="チャレンジ目標" data-key="theme-challenge">
+    </div>
+  </div>
+
+  <div class="calendar-grid">
+    <div class="calendar-weekdays">
+      <div class="calendar-weekday sun">SUN</div>
+      <div class="calendar-weekday">MON</div>
+      <div class="calendar-weekday">TUE</div>
+      <div class="calendar-weekday">WED</div>
+      <div class="calendar-weekday">THU</div>
+      <div class="calendar-weekday">FRI</div>
+      <div class="calendar-weekday sat">SAT</div>
+    </div>
+    <div class="calendar-days" id="calendar-days"></div>
+  </div>
+
+  <div class="wakuwaku-section">
+    <div class="wakuwaku-title">ワクワクリスト</div>
+    <div class="wakuwaku-sub">— write the future as if it has already happened —</div>
+    <div class="wakuwaku-list" id="wakuwaku-list"></div>
+  </div>
+
+  <div id="day-edit-area"></div>
+</section>
+
+<!-- ============ WEEK ============ -->
+<section class="view" id="view-week">
+  <div class="week-nav">
+    <button class="month-nav-btn" onclick="changeWeek(-1)">◁</button>
+    <div style="text-align:center; flex:1;">
+      <div class="week-nav-text" id="week-range">—</div>
+      <div class="week-nav-text-jp" id="week-num">—</div>
+    </div>
+    <button class="month-nav-btn" onclick="changeWeek(1)">▷</button>
+  </div>
+
+  <div id="week-days"></div>
+</section>
+
+<!-- ============ DAILY ============ -->
+<section class="view" id="view-daily">
+  <div class="daily-nav">
+    <button class="daily-nav-btn" onclick="changeDaily(-1)">◁ Prev</button>
+    <button class="daily-nav-btn" onclick="goToday()">Today</button>
+    <button class="daily-nav-btn" onclick="changeDaily(1)">Next ▷</button>
+  </div>
+
+  <div class="daily-header">
+    <div class="daily-date-large" id="daily-date">—</div>
+    <div class="daily-month-jp" id="daily-month">—</div>
+    <div class="daily-day-counter" id="daily-counter">—</div>
+    <div class="daily-weather">
+      <div class="weather-icon" data-weather="sun" onclick="setWeather('sun')">☀</div>
+      <div class="weather-icon" data-weather="cloud" onclick="setWeather('cloud')">☁</div>
+      <div class="weather-icon" data-weather="rain" onclick="setWeather('rain')">☂</div>
+      <div class="weather-icon" data-weather="snow" onclick="setWeather('snow')">❄</div>
+    </div>
+  </div>
+
+  <div class="daily-quote">
+    <div class="daily-quote-label">7-second sentence</div>
+    <input class="daily-quote-input" id="daily-quote" placeholder="心に残った一言" data-daily="quote">
+  </div>
+
+  <div class="daily-section">
+    <div class="daily-section-header">
+      <div class="daily-section-num">1</div>
+      <div class="daily-section-title">反省・イヤだったこと・改善点</div>
+    </div>
+    <div class="daily-section-body">
+      <div class="daily-list" id="daily-reflect"></div>
+    </div>
+  </div>
+
+  <div class="daily-section">
+    <div class="daily-section-header">
+      <div class="daily-section-num">2</div>
+      <div class="daily-section-title">できたこと・良かったこと・達成したこと</div>
+    </div>
+    <div class="daily-section-body">
+      <div class="daily-list" id="daily-done"></div>
+    </div>
+  </div>
+
+  <div class="daily-section">
+    <div class="daily-section-header">
+      <div class="daily-section-num">3</div>
+      <div class="daily-section-title">自分のほめポイント・成長ポイント</div>
+    </div>
+    <div class="daily-section-body">
+      <div class="daily-list" id="daily-self-praise"></div>
+    </div>
+  </div>
+
+  <div class="daily-section">
+    <div class="daily-section-header">
+      <div class="daily-section-num">4</div>
+      <div class="daily-section-title">他人のほめポイント・ありがとうポイント</div>
+    </div>
+    <div class="daily-section-body">
+      <div class="daily-list" id="daily-others-praise"></div>
+    </div>
+  </div>
+
+  <div class="daily-section">
+    <div class="daily-section-header">
+      <div class="daily-section-num">5</div>
+      <div class="daily-section-title">明日のやることリスト</div>
+    </div>
+    <div class="daily-section-body">
+      <div class="daily-todo-list" id="daily-tomorrow"></div>
+    </div>
+  </div>
+
+  <div class="daily-section">
+    <div class="daily-section-header">
+      <div class="daily-section-num">6</div>
+      <div class="daily-section-title">今日の気付き</div>
+    </div>
+    <div class="daily-section-body">
+      <textarea class="daily-textarea" id="daily-insight" placeholder="もし今日をやり直すなら、どう過ごす？" data-daily="insight"></textarea>
+    </div>
+  </div>
+</section>
+
+<!-- ============ タブ ============ -->
+<nav class="tab-nav">
+  <button class="tab-btn active" data-view="home" onclick="switchView('home')">
+    <span class="tab-icon">H</span>HOME
+  </button>
+  <button class="tab-btn" data-view="year" onclick="switchView('year')">
+    <span class="tab-icon">Y</span>YEAR
+  </button>
+  <button class="tab-btn" data-view="month" onclick="switchView('month')">
+    <span class="tab-icon">M</span>MONTH
+  </button>
+  <button class="tab-btn" data-view="week" onclick="switchView('week')">
+    <span class="tab-icon">W</span>WEEK
+  </button>
+  <button class="tab-btn" data-view="daily" onclick="switchView('daily')">
+    <span class="tab-icon">D</span>DAILY
+  </button>
+</nav>
+
+<div class="toast" id="toast">記入済</div>
+
+<script>
+/* =========================================================
+   MIRAI FURIKAERI DIARY 2026 — App Logic
+   ========================================================= */
+
+const YEAR = 2026;
+const MONTHS_EN = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+const MONTHS_JP = ['睦月','如月','弥生','卯月','皐月','水無月','文月','葉月','長月','神無月','霜月','師走'];
+const WEEKDAY_JP = ['日','月','火','水','木','金','土'];
+const WEEKDAY_EN = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+const WEEK_CYCLE = ['自由','予備','集中','自由','集中','予備','自由']; // Sun-Sat: 梅澤さんの週サイクル（月予備/火集中/水自由/木集中/金予備/土日自由）
+
+let currentMonth = new Date().getMonth(); // 表示中の月
+let currentDate = new Date(); // 表示中の日（DAILY/WEEK用）
+let dataCache = {}; // ローカルキャッシュ
+
+/* ---------- ストレージ ---------- */
+async function saveItem(key, value) {
+  dataCache[key] = value;
+  try {
+    if (window.storage) {
+      await window.storage.set(key, JSON.stringify(value));
+    } else {
+      // フォールバック（メモリのみ）
+    }
+    showToast();
+  } catch(e) { console.error('save error', e); }
+}
+
+async function loadItem(key, defaultVal = '') {
+  if (key in dataCache) return dataCache[key];
+  try {
+    if (window.storage) {
+      const result = await window.storage.get(key);
+      if (result && result.value !== undefined) {
+        const parsed = JSON.parse(result.value);
+        dataCache[key] = parsed;
+        return parsed;
+      }
+    }
+  } catch(e) { /* キーが無い等 */ }
+  dataCache[key] = defaultVal;
+  return defaultVal;
+}
+
+async function loadAllKeys(prefix) {
+  try {
+    if (window.storage) {
+      const result = await window.storage.list(prefix);
+      if (result && result.keys) return result.keys;
+    }
+  } catch(e) {}
+  return [];
+}
+
+/* ---------- 日付ユーティリティ ---------- */
+function pad(n) { return String(n).padStart(2,'0'); }
+function dateKey(y,m,d) { return `${y}-${pad(m+1)}-${pad(d)}`; }
+function todayKey() { const t = new Date(); return dateKey(t.getFullYear(), t.getMonth(), t.getDate()); }
+function dayOfYear(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  return Math.floor((date - start) / 86400000);
+}
+function isToday(y,m,d) {
+  const t = new Date();
+  return y===t.getFullYear() && m===t.getMonth() && d===t.getDate();
+}
+
+/* ---------- ビュー切替 ---------- */
+function switchView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`view-${name}`).classList.add('active');
+  document.querySelector(`.tab-btn[data-view="${name}"]`).classList.add('active');
+  window.scrollTo(0,0);
+
+  if (name === 'home') renderHome();
+  if (name === 'year') renderYear();
+  if (name === 'month') renderMonth();
+  if (name === 'week') renderWeek();
+  if (name === 'daily') renderDaily();
+}
+
+/* ---------- トースト ---------- */
+let toastTimer = null;
+function showToast(msg = '記入済') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1200);
+}
+
+/* ---------- HOME ---------- */
+async function renderHome() {
+  const t = new Date();
+  const m = t.getMonth(), d = t.getDate();
+  document.getElementById('home-date').textContent = `${pad(m+1)}.${pad(d)}`;
+  document.getElementById('home-date-jp').textContent =
+    `令和八年 ${MONTHS_JP[m]} ${d}日 ${WEEKDAY_JP[t.getDay()]}曜日`;
+
+  const doy = dayOfYear(t);
+  const totalDays = 365;
+  const remaining = totalDays - doy;
+  document.getElementById('home-progress').textContent = `${doy} / ${totalDays}日　残${remaining}日`;
+  document.getElementById('home-progress-fill').style.width = `${(doy/totalDays*100).toFixed(1)}%`;
+
+  // 統計
+  const dailyKeys = await loadAllKeys('daily-');
+  const dailyCount = new Set(dailyKeys.filter(k => k.match(/daily-\d{4}-\d{2}-\d{2}-/)).map(k => k.match(/daily-(\d{4}-\d{2}-\d{2})/)?.[1])).size;
+  document.getElementById('stat-daily-count').textContent = dailyCount;
+
+  const yoshukuKeys = await loadAllKeys('yoshuku-');
+  let yoshukuCount = 0;
+  for (const k of yoshukuKeys) {
+    const v = await loadItem(k);
+    if (v && v.trim()) yoshukuCount++;
+  }
+  document.getElementById('stat-yoshuku-count').textContent = yoshukuCount;
+
+  const holidayKeys = await loadAllKeys('holiday-');
+  let holidayCount = 0;
+  for (const k of holidayKeys) {
+    const v = await loadItem(k);
+    if (v) holidayCount++;
+  }
+  document.getElementById('stat-holiday-count').textContent = `${holidayCount} / 150`;
+}
+
+/* ---------- YEAR ---------- */
+async function renderYear() {
+  const container = document.getElementById('year-months');
+  container.innerHTML = '';
+
+  let totalRest = 0, totalEvent = 0;
+
+  for (let m = 0; m < 12; m++) {
+    const days = new Date(YEAR, m+1, 0).getDate();
+    const section = document.createElement('div');
+    section.className = 'month-section';
+    section.innerHTML = `
+      <div class="month-header">
+        <div class="month-header-en">${MONTHS_EN[m]}</div>
+        <div class="month-header-jp">${MONTHS_JP[m]} / ${pad(m+1)}月</div>
+      </div>
+      <div class="month-grid" id="year-month-${m}"></div>
+    `;
+    container.appendChild(section);
+
+    const grid = section.querySelector(`#year-month-${m}`);
+    for (let d = 1; d <= days; d++) {
+      const date = new Date(YEAR, m, d);
+      const dow = date.getDay();
+      const key = dateKey(YEAR, m, d);
+
+      const numCell = document.createElement('div');
+      numCell.className = `month-cell day-num ${dow===0?'is-sunday':''} ${dow===6?'is-saturday':''}`;
+      numCell.textContent = `${d}.${WEEKDAY_JP[dow]}`;
+      grid.appendChild(numCell);
+
+      // 休日マーク
+      const holidayCell = document.createElement('div');
+      holidayCell.className = 'month-cell holiday-mark';
+      const isHoliday = await loadItem(`holiday-${key}`, false);
+      if (isHoliday) {
+        holidayCell.classList.add('is-holiday-mark', 'is-holiday');
+        holidayCell.innerHTML = '<span style="font-size:10px;color:var(--gold-deep)">休</span>';
+        totalRest++;
+      } else {
+        holidayCell.innerHTML = '<span style="color:var(--paper-line);font-size:10px">·</span>';
+      }
+      holidayCell.onclick = async () => {
+        const cur = await loadItem(`holiday-${key}`, false);
+        await saveItem(`holiday-${key}`, !cur);
+        renderYear();
+        updateYearStats();
+      };
+      grid.appendChild(holidayCell);
+
+      // 予定セル
+      const eventCell = document.createElement('div');
+      eventCell.className = 'month-cell';
+      const eventInput = document.createElement('input');
+      eventInput.type = 'text';
+      eventInput.placeholder = '予定';
+      eventInput.value = await loadItem(`year-event-${key}`, '');
+      eventInput.dataset.key = `year-event-${key}`;
+      eventInput.addEventListener('change', async () => {
+        await saveItem(`year-event-${key}`, eventInput.value);
+        if (eventInput.value.trim()) totalEvent++;
+        updateYearStats();
+      });
+      if (eventInput.value.trim()) totalEvent++;
+      eventCell.appendChild(eventInput);
+      grid.appendChild(eventCell);
+    }
+  }
+
+  document.getElementById('year-rest').textContent = totalRest;
+  document.getElementById('year-event').textContent = totalEvent;
+  const t = new Date();
+  if (t.getFullYear() === YEAR) {
+    document.getElementById('year-progress-num').textContent = `${(dayOfYear(t)/365*100).toFixed(0)}%`;
+  } else {
+    document.getElementById('year-progress-num').textContent = t.getFullYear() < YEAR ? '0%' : '100%';
+  }
+}
+
+async function updateYearStats() {
+  // 軽量更新（再描画なし）
+  const holidayKeys = await loadAllKeys('holiday-');
+  let count = 0;
+  for (const k of holidayKeys) {
+    if (await loadItem(k, false)) count++;
+  }
+  document.getElementById('year-rest').textContent = count;
+}
+
+/* ---------- MONTH ---------- */
+function changeMonth(delta) {
+  currentMonth += delta;
+  if (currentMonth < 0) currentMonth = 11;
+  if (currentMonth > 11) currentMonth = 0;
+  renderMonth();
+}
+
+async function renderMonth() {
+  const m = currentMonth;
+  document.getElementById('month-en').textContent = MONTHS_EN[m];
+  document.getElementById('month-jp').textContent = `${MONTHS_JP[m]} / ${pad(m+1)}月`;
+
+  // テーマ
+  const themeMust = document.getElementById('theme-must');
+  const themeChallenge = document.getElementById('theme-challenge');
+  themeMust.value = await loadItem(`theme-must-${YEAR}-${pad(m+1)}`, '');
+  themeChallenge.value = await loadItem(`theme-challenge-${YEAR}-${pad(m+1)}`, '');
+  themeMust.onchange = () => saveItem(`theme-must-${YEAR}-${pad(m+1)}`, themeMust.value);
+  themeChallenge.onchange = () => saveItem(`theme-challenge-${YEAR}-${pad(m+1)}`, themeChallenge.value);
+
+  // カレンダー
+  const calendarDays = document.getElementById('calendar-days');
+  calendarDays.innerHTML = '';
+  const firstDay = new Date(YEAR, m, 1).getDay();
+  const lastDate = new Date(YEAR, m+1, 0).getDate();
+
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'calendar-day empty';
+    calendarDays.appendChild(empty);
+  }
+
+  for (let d = 1; d <= lastDate; d++) {
+    const dow = new Date(YEAR, m, d).getDay();
+    const cell = document.createElement('div');
+    cell.className = 'calendar-day';
+    if (dow === 0) cell.classList.add('sun');
+    if (dow === 6) cell.classList.add('sat');
+    if (isToday(YEAR, m, d)) cell.classList.add('today');
+
+    const key = dateKey(YEAR, m, d);
+    const yoshuku = await loadItem(`yoshuku-${key}`, '');
+    if (yoshuku && yoshuku.trim()) cell.classList.add('has-yoshuku');
+
+    cell.innerHTML = `
+      <div>${d}</div>
+      <div class="calendar-day-content">${yoshuku ? escapeHtml(yoshuku.substring(0,18)) : ''}</div>
+    `;
+    cell.onclick = () => openDayEdit(YEAR, m, d);
+    calendarDays.appendChild(cell);
+  }
+
+  // ワクワクリスト
+  const wakuwakuList = document.getElementById('wakuwaku-list');
+  wakuwakuList.innerHTML = '';
+  const wakuwakuMonthKey = `wakuwaku-${YEAR}-${pad(m+1)}`;
+  const wakuwakuItems = await loadItem(wakuwakuMonthKey, Array(8).fill(''));
+
+  for (let i = 0; i < 8; i++) {
+    const item = document.createElement('div');
+    item.className = 'wakuwaku-item';
+    item.innerHTML = `
+      <div class="wakuwaku-num">${i+1}</div>
+      <input type="text" class="wakuwaku-input" placeholder="ワクワクすること（過去完了形で）" value="${escapeHtml(wakuwakuItems[i] || '')}" data-idx="${i}">
+    `;
+    const input = item.querySelector('input');
+    input.addEventListener('change', async () => {
+      const arr = await loadItem(wakuwakuMonthKey, Array(8).fill(''));
+      arr[i] = input.value;
+      await saveItem(wakuwakuMonthKey, arr);
+    });
+    wakuwakuList.appendChild(item);
+  }
+
+  // 編集エリアをリセット
+  document.getElementById('day-edit-area').innerHTML = '';
+}
+
+async function openDayEdit(y, m, d) {
+  const key = dateKey(y, m, d);
+  const area = document.getElementById('day-edit-area');
+  const yoshuku = await loadItem(`yoshuku-${key}`, '');
+  area.innerHTML = `
+    <div class="wakuwaku-section" style="border-left-color:var(--navy);">
+      <div class="wakuwaku-title">${m+1}月${d}日（${WEEKDAY_JP[new Date(y,m,d).getDay()]}） 予祝</div>
+      <div class="wakuwaku-sub">— 過去完了形で書いてみましょう —</div>
+      <textarea class="daily-textarea" id="day-yoshuku" placeholder="例：○○様と最高の商談ができた ✨" style="border:1px solid var(--paper-line);padding:10px;background:var(--paper);">${escapeHtml(yoshuku)}</textarea>
+      <button class="menu-btn" onclick="saveDayYoshuku('${key}')" style="margin-top:10px;">保存</button>
+      <button class="menu-btn" onclick="goToDaily('${key}')" style="margin-top:8px;background:var(--gold-deep);">この日のDailyへ →</button>
+    </div>
+  `;
+  area.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+async function saveDayYoshuku(key) {
+  const val = document.getElementById('day-yoshuku').value;
+  await saveItem(`yoshuku-${key}`, val);
+  renderMonth();
+}
+
+function goToDaily(key) {
+  const [y,m,d] = key.split('-').map(Number);
+  currentDate = new Date(y, m-1, d);
+  switchView('daily');
+}
+
+/* ---------- WEEK ---------- */
+function changeWeek(delta) {
+  currentDate.setDate(currentDate.getDate() + delta*7);
+  renderWeek();
+}
+
+async function renderWeek() {
+  const dow = currentDate.getDay();
+  const sunday = new Date(currentDate);
+  sunday.setDate(currentDate.getDate() - dow);
+
+  const saturday = new Date(sunday);
+  saturday.setDate(sunday.getDate() + 6);
+
+  document.getElementById('week-range').textContent =
+    `${pad(sunday.getMonth()+1)}.${pad(sunday.getDate())} – ${pad(saturday.getMonth()+1)}.${pad(saturday.getDate())}`;
+
+  // 週番号
+  const oneJan = new Date(YEAR, 0, 1);
+  const weekNum = Math.ceil(((sunday - oneJan) / 86400000 + oneJan.getDay() + 1) / 7);
+  document.getElementById('week-num').textContent = `WEEK ${weekNum} / ${MONTHS_JP[sunday.getMonth()]}`;
+
+  const container = document.getElementById('week-days');
+  container.innerHTML = '';
+
+  for (let i = 0; i < 7; i++) {
+    const date = new Date(sunday);
+    date.setDate(sunday.getDate() + i);
+    const key = dateKey(date.getFullYear(), date.getMonth(), date.getDate());
+    const isTodayClass = isToday(date.getFullYear(), date.getMonth(), date.getDate()) ? 'is-today' : '';
+    const dowClass = i === 0 ? 'sun' : i === 6 ? 'sat' : '';
+
+    const block = document.createElement('div');
+    block.className = 'day-block';
+    if (isToday(date.getFullYear(), date.getMonth(), date.getDate())) block.classList.add('open');
+    block.innerHTML = `
+      <div class="day-block-header ${dowClass} ${isTodayClass}" onclick="this.parentElement.classList.toggle('open')">
+        <div class="day-info">
+          <span class="day-date">${pad(date.getMonth()+1)}.${pad(date.getDate())}</span>
+          <span class="day-name">${WEEKDAY_JP[i]}曜日</span>
+        </div>
+        <span class="day-cycle">${WEEK_CYCLE[i]}</span>
+      </div>
+      <div class="day-block-body">
+        <div class="time-slot">
+          <div class="time-label">AM<br>午前</div>
+          <textarea class="time-input" data-key="week-am-${key}" placeholder="午前の予定・タスク"></textarea>
+        </div>
+        <div class="time-slot">
+          <div class="time-label">PM<br>午後</div>
+          <textarea class="time-input" data-key="week-pm-${key}" placeholder="午後の予定・タスク"></textarea>
+        </div>
+        <div class="time-slot">
+          <div class="time-label">EVE<br>夜</div>
+          <textarea class="time-input" data-key="week-eve-${key}" placeholder="夜の予定・タスク"></textarea>
+        </div>
+        <div class="todo-section">
+          <div class="todo-label">TO DO / メモ</div>
+          <textarea class="todo-input" data-key="week-todo-${key}" placeholder="ToDo・メモ・打ち合わせ記録"></textarea>
+        </div>
+      </div>
+    `;
+    container.appendChild(block);
+  }
+
+  // 値ロード＆バインド
+  const inputs = container.querySelectorAll('[data-key]');
+  for (const el of inputs) {
+    el.value = await loadItem(el.dataset.key, '');
+    el.addEventListener('change', () => saveItem(el.dataset.key, el.value));
+    el.addEventListener('blur', () => saveItem(el.dataset.key, el.value));
+  }
+}
+
+/* ---------- DAILY ---------- */
+function changeDaily(delta) {
+  currentDate.setDate(currentDate.getDate() + delta);
+  renderDaily();
+}
+
+function goToday() {
+  currentDate = new Date();
+  renderDaily();
+}
+
+async function renderDaily() {
+  const date = currentDate;
+  const y = date.getFullYear(), m = date.getMonth(), d = date.getDate();
+  const key = dateKey(y, m, d);
+
+  document.getElementById('daily-date').textContent = `${pad(m+1)}.${pad(d)}`;
+  document.getElementById('daily-month').textContent = `${MONTHS_JP[m]} ${WEEKDAY_JP[date.getDay()]}曜日`;
+  const doy = dayOfYear(date);
+  document.getElementById('daily-counter').textContent = `Day ${doy} / 365`;
+
+  // 天気
+  const weather = await loadItem(`daily-${key}-weather`, '');
+  document.querySelectorAll('.weather-icon').forEach(el => {
+    el.classList.toggle('selected', el.dataset.weather === weather);
+  });
+
+  // 7秒センテンス
+  const quote = document.getElementById('daily-quote');
+  quote.value = await loadItem(`daily-${key}-quote`, '');
+  quote.onchange = () => saveItem(`daily-${key}-quote`, quote.value);
+
+  // 1〜4: 各3行
+  const sections = [
+    {id: 'daily-reflect', key: 'reflect', placeholder: '反省・改善点'},
+    {id: 'daily-done', key: 'done', placeholder: 'できたこと'},
+    {id: 'daily-self-praise', key: 'self', placeholder: '自分のほめポイント'},
+    {id: 'daily-others-praise', key: 'others', placeholder: '他人のほめポイント'}
+  ];
+
+  for (const s of sections) {
+    const container = document.getElementById(s.id);
+    container.innerHTML = '';
+    for (let i = 0; i < 3; i++) {
+      const item = document.createElement('div');
+      item.className = 'daily-item';
+      item.innerHTML = `
+        <span class="daily-bullet">◆</span>
+        <input class="daily-input" placeholder="${s.placeholder}" data-key="daily-${key}-${s.key}-${i}">
+      `;
+      container.appendChild(item);
+    }
+  }
+
+  // 5: 明日のやることリスト（10項目＋分数）
+  const tomorrow = document.getElementById('daily-tomorrow');
+  tomorrow.innerHTML = '';
+  for (let i = 0; i < 10; i++) {
+    const item = document.createElement('div');
+    item.className = 'daily-todo-item';
+    item.innerHTML = `
+      <span class="daily-todo-num">${i+1}</span>
+      <input class="daily-todo-input" placeholder="やること" data-key="daily-${key}-tomorrow-${i}">
+      <input class="daily-todo-min" placeholder="分" data-key="daily-${key}-tomorrow-min-${i}">
+    `;
+    tomorrow.appendChild(item);
+  }
+
+  // 6: 今日の気付き
+  const insight = document.getElementById('daily-insight');
+  insight.value = await loadItem(`daily-${key}-insight`, '');
+  insight.onchange = () => saveItem(`daily-${key}-insight`, insight.value);
+
+  // 全インプットをロード＆バインド
+  const allInputs = document.querySelectorAll('#view-daily [data-key]');
+  for (const el of allInputs) {
+    el.value = await loadItem(el.dataset.key, '');
+    el.addEventListener('change', () => saveItem(el.dataset.key, el.value));
+    el.addEventListener('blur', () => saveItem(el.dataset.key, el.value));
+  }
+}
+
+async function setWeather(w) {
+  const date = currentDate;
+  const key = dateKey(date.getFullYear(), date.getMonth(), date.getDate());
+  await saveItem(`daily-${key}-weather`, w);
+  document.querySelectorAll('.weather-icon').forEach(el => {
+    el.classList.toggle('selected', el.dataset.weather === w);
+  });
+}
+
+/* ---------- ユーティリティ ---------- */
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+
+async function exportData() {
+  const allKeys = await loadAllKeys('');
+  const dump = {};
+  for (const k of allKeys) {
+    dump[k] = await loadItem(k);
+  }
+  const blob = new Blob([JSON.stringify(dump, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `mirai-furikaeri-${YEAR}-backup-${new Date().toISOString().substring(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('書出完了');
+}
+
+async function clearAllData() {
+  if (!confirm('全ての記録を消去します。よろしいですか？')) return;
+  if (!confirm('本当によろしいですか？この操作は取り消せません。')) return;
+  const allKeys = await loadAllKeys('');
+  for (const k of allKeys) {
+    try {
+      if (window.storage) await window.storage.delete(k);
+    } catch(e) {}
+  }
+  dataCache = {};
+  showToast('消去完了');
+  renderHome();
+}
+
+/* ---------- 初期化 ---------- */
+(async function init() {
+  currentMonth = new Date().getMonth();
+  await renderHome();
+})();
+</script>
+
+</body>
+</html>
